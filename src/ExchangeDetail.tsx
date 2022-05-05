@@ -1,8 +1,15 @@
 import { Link, useParams } from "react-router-dom";
 import { useApi } from "./hooks/hooks";
 import React from "react";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons/faFacebook";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
+import { faReddit } from "@fortawesome/free-brands-svg-icons/faReddit";
+import { faTelegram } from "@fortawesome/free-brands-svg-icons/faTelegram";
+import { faSlack } from "@fortawesome/free-brands-svg-icons/faSlack";
+import IconButton from "./components/IconButton";
 
 const endpoint = "https://api.coingecko.com/api/v3/exchanges/";
+const twitterBaseUrl = "https://twitter.com/";
 
 const ExchangeDetail = () => {
   // Get id of exchange from the url
@@ -56,14 +63,18 @@ const SocialMediaList = ({ exchange }: { exchange: DetailedExchange }) => {
   const { facebook_url, reddit_url, telegram_url, slack_url, twitter_handle } =
     exchange;
 
-  /* Show each social media link if available */
+  /* Show each social media link if available using icon */
   return (
-    <ul>
-      {facebook_url && <li>{`Facebook: ${facebook_url}`}</li>}
-      {reddit_url && <li>{`Reddit: ${reddit_url}`}</li>}
-      {telegram_url && <li>{`Telegram: ${telegram_url}`}</li>}
-      {slack_url && <li>{`Slack: ${slack_url}`}</li>}
-      {twitter_handle && <li>{`Twitter: ${twitter_handle}`}</li>}
-    </ul>
+    <>
+      <div id="social-media-list">
+        {facebook_url && <IconButton icon={faFacebook} link={facebook_url} />}
+        {twitter_handle && (
+          <IconButton icon={faTwitter} link={twitterBaseUrl + twitter_handle} />
+        )}
+        {reddit_url && <IconButton icon={faReddit} link={reddit_url} />}
+        {telegram_url && <IconButton icon={faTelegram} link={telegram_url} />}
+        {slack_url && <IconButton icon={faSlack} link={slack_url} />}
+      </div>
+    </>
   );
 };
