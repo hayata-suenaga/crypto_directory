@@ -6,7 +6,11 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
 import { faReddit } from "@fortawesome/free-brands-svg-icons/faReddit";
 import { faTelegram } from "@fortawesome/free-brands-svg-icons/faTelegram";
 import { faSlack } from "@fortawesome/free-brands-svg-icons/faSlack";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons/faGlobe";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons/faCalendar";
+import { faRankingStar } from "@fortawesome/free-solid-svg-icons/faRankingStar";
 import IconButton from "./components/IconButton";
+import InfoCard from "./components/InfoCard";
 
 const endpoint = "https://api.coingecko.com/api/v3/exchanges/";
 const twitterBaseUrl = "https://twitter.com/";
@@ -23,12 +27,12 @@ const ExchangeDetail = () => {
     );
 
   return (
-    <main className="container">
-      <DetailCard exchange={exchange} />
-      <Link to="/">
-        <button>Back to Dashboard</button>
-      </Link>
-    </main>
+    <>
+      <header></header>
+      <main className="container">
+        <DetailCard exchange={exchange} />
+      </main>
+    </>
   );
 };
 
@@ -46,15 +50,28 @@ const DetailCard = ({ exchange }: { exchange: DetailedExchange }) => {
   } = exchange;
 
   return (
-    <article>
-      <img src={image} alt="exchange logo" />
-      <h2>{name}</h2>
-      {/* Country can be null */}
-      <p>{`country: ${country ? country : "N/A"}`}</p> <p>{`url: ${url}`}</p>
-      <p>{`rank: ${trust_score_rank}`}</p>
-      <p>{`Established in: ${year_established}`}</p>
-      <p>{description ? "Description not available" : description}</p>
-      <SocialMediaList exchange={exchange} />
+    <article id="exchange-detail">
+      <div className="main-info">
+        <a className="headline" href={exchange.url}>
+          <img src={image} alt="exchange logo" />
+          <h2>{name}</h2>
+        </a>
+        <SocialMediaList exchange={exchange} />
+      </div>
+      <p>{description ? description : "Description not available"}</p>
+      <div id="info-card-list">
+        <InfoCard
+          title="country"
+          icon={faGlobe}
+          data={country ? country : "N/A"}
+        />
+        <InfoCard title="rank" icon={faRankingStar} data={trust_score_rank} />
+        <InfoCard
+          title="established at"
+          icon={faCalendar}
+          data={year_established}
+        />
+      </div>
     </article>
   );
 };

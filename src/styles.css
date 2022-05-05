@@ -1,5 +1,6 @@
 :root {
-    --border-color: gray;
+    --border: 2px solid gray;
+    --border-radius: 10px;
     --hover-scale: 1.03;
     --hover-transition: transform 200ms ease-in-out;
 }
@@ -8,14 +9,18 @@
     box-sizing: border-box;
 }
 
+h1, h2, h3, p {
+    margin: 0;
+}
+
 .container {
     width: 100%;
     padding: 0 10rem;
 }
 
 .card {
-    border: 2px solid var(--border-color);
-    border-radius: 10px;
+    border: var(--border);
+    border-radius: var(--border-radius);
     padding: 1rem;
     min-width: 0;
     cursor: pointer;
@@ -48,8 +53,52 @@
     gap: 1rem;
 }
 
+#info-card-list {
+    margin-top: 5rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.info-card {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 4rem 1rem;
+    min-width: 10rem;
+    max-width: 20rem;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    text-align: center;
+    position: relative;
+}
+
+.info-card .title {
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: #1DA1F2;
+}
+
+.info-card .title h3 {
+    font-size: 1rem;
+    text-transform: capitalize;
+    width: max-content;
+}
+
+.info-card .svg-inline--fa {
+    font-size: 1rem;
+}
+
 .svg-inline--fa {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .fa-facebook {
@@ -72,9 +121,52 @@
     color: #229ED9;
 }
 
+header {
+    width: 100vw;
+    background-color: #1DA1F2;
+    height: 100px;
+    margin-bottom: 2rem;
+}
+
+#exchange-detail .headline {
+    all: unset;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    cursor: pointer;
+}
+
+#exchange-detail .main-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+#exchange-detail img {
+    width: 5rem;
+    padding: 0.5rem;
+    border: 1px solid black;
+}
+
+#exchange-detail h2 {
+    font-size: 2rem;
+}
+
+#exchange-detail p {
+    font-size: 1rem;
+}
+
 #social-media-list {
     display: flex;
     column-gap: 1rem;
+}
+
+#exchange-detail .info-card p {
+    font-size: 2rem;
+    text-transform: capitalize;
 }
 
 @media (max-width: 1500px) {
@@ -104,5 +196,39 @@
 
     #exchange-list {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    #exchange-detail img {
+        width: 3rem;
+        padding: 0.5rem;
+        border: 1px solid black;
+    }
+
+    #exchange-detail h2 {
+        font-size: 1.5rem;
+    }
+
+    #exchange-detail p {
+        font-size: 1rem;
+    }
+
+    .svg-inline--fa {
+        font-size: 1.5rem;
+    }
+
+    .info-card .title {
+        column-gap: 0.5rem;
+        align-items: center;
+        padding: 1rem 1rem;
+
+    }
+
+    .info-card .title h3 {
+        font-size: 0.7rem;
+        text-transform: capitalize;
+    }
+
+    #exchange-detail .info-card .svg-inline--fa {
+        font-size: 1rem;
     }
 }
