@@ -1,8 +1,11 @@
 import React from 'react';
+import Todo from "./Todo";
+
+const exampleExchanges = require("./exampleData.json");
 
 function App() {
   return (
-    <h1>Hello!</h1>
+    <Todo exchange={exampleExchanges[0]} />
   );
 }
 
