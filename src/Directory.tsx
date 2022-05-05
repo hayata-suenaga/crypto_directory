@@ -1,8 +1,7 @@
-import Todo from "./ExchangeCard";
+import Todo from "./components/ExchangeCard";
 import React from "react";
-import { useApi } from "./hooks";
+import { useApi } from "./hooks/hooks";
 
-// const exampleExchanges = require("./exampleData.json");
 const endpoint =
   "https://api.coingecko.com/api/v3/exchanges?per_page=10&page=2";
 

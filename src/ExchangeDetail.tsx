@@ -1,12 +1,13 @@
 import { Link, useParams } from "react-router-dom";
-import { useApi } from "./hooks";
+import { useApi } from "./hooks/hooks";
 import React from "react";
 
 const endpoint = "https://api.coingecko.com/api/v3/exchanges/";
 
 const ExchangeDetail = () => {
-  const params = useParams();
-  const { data: exchange, loading, errored } = useApi(endpoint + params.id);
+  // Get id of exchange from the url
+  const { id } = useParams();
+  const { data: exchange, loading, errored } = useApi(endpoint + id);
 
   if (loading) return <div>Loading...</div>;
   if (errored)
@@ -26,12 +27,7 @@ const ExchangeDetail = () => {
 
 export default ExchangeDetail;
 
-interface DetailCardProps {
-  exchange: DetailedExchange;
-}
-
-// name, country, trust rank, logo, year of establishment, social media links, description, and a back-to-main-page button.
-const DetailCard = ({ exchange }: DetailCardProps) => {
+const DetailCard = ({ exchange }: { exchange: DetailedExchange }) => {
   const {
     image,
     name,
@@ -41,12 +37,13 @@ const DetailCard = ({ exchange }: DetailCardProps) => {
     year_established,
     description,
   } = exchange;
+
   return (
     <article>
       <img src={image} alt="exchange logo" />
       <h2>{name}</h2>
-      <p>{`country: ${country ? country : "N/A"}`}</p>
-      <p>{`url: ${url}`}</p>
+      {/* Country can be null */}
+      <p>{`country: ${country ? country : "N/A"}`}</p> <p>{`url: ${url}`}</p>
       <p>{`rank: ${trust_score_rank}`}</p>
       <p>{`Established in: ${year_established}`}</p>
       <p>{description ? "Description not available" : description}</p>
@@ -58,6 +55,8 @@ const DetailCard = ({ exchange }: DetailCardProps) => {
 const SocialMediaList = ({ exchange }: { exchange: DetailedExchange }) => {
   const { facebook_url, reddit_url, telegram_url, slack_url, twitter_handle } =
     exchange;
+
+  /* Show each social media link if available */
   return (
     <ul>
       {facebook_url && <li>{`Facebook: ${facebook_url}`}</li>}
