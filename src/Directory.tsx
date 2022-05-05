@@ -16,11 +16,13 @@ const Directory = () => {
     );
 
   return (
-    <main>
+    <main className="container">
       <h1>Exchange List</h1>
-      {exchanges.map((exchange: Exchange) => (
-        <Todo key={exchange.id} exchange={exchange} />
-      ))}
+      <div id="exchange-list">
+        {exchanges.map((exchange: Exchange) => (
+          <Todo key={exchange.id} exchange={exchange} />
+        ))}
+      </div>
     </main>
   );
 };
