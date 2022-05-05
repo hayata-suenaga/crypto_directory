@@ -16,7 +16,7 @@ const ExchangeDetail = () => {
     );
 
   return (
-    <main>
+    <main className="container">
       <DetailCard exchange={exchange} />
       <Link to="/">
         <button>Back to Dashboard</button>
