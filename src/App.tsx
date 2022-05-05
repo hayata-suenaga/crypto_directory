@@ -5,7 +5,10 @@ const exampleExchanges = require("./exampleData.json");
 
 function App() {
   return (
-    <Todo exchange={exampleExchanges[0]} />
+      <main>
+        <h1>Exchange List</h1>
+        {exampleExchanges.map((exchange: Exchange) => <Todo key={exchange.id} exchange={exchange} />)}
+      </main>
   );
 }
 
