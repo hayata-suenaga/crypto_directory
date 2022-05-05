@@ -1,14 +1,16 @@
-import React from 'react';
-import Todo from "./Todo";
-
-const exampleExchanges = require("./exampleData.json");
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Directory from "./Directory";
+import ExchangeDetail from "./ExchangeDetail";
 
 function App() {
   return (
-      <main>
-        <h1>Exchange List</h1>
-        {exampleExchanges.map((exchange: Exchange) => <Todo key={exchange.id} exchange={exchange} />)}
-      </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Directory />} />
+        <Route path="/exchanges/:id" element={<ExchangeDetail />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
