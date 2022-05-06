@@ -9,11 +9,13 @@ const endpoint =
 const Directory = () => {
   const { data: exchanges, loading, errored } = useApi(endpoint);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="loading-indicator">Loading...</div>;
 
   if (errored)
     return (
-      <div>Something went wrong... Please refresh your browser again :)</div>
+      <div className="error-msg">
+        Something went wrong... Please refresh your browser again :)
+      </div>
     );
 
   return (
