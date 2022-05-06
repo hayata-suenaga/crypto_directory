@@ -4,7 +4,7 @@ import { useApi } from "./hooks/hooks";
 import Header from "./components/Header";
 
 const endpoint =
-  "https://api.coingecko.com/api/v3/exchanges?per_page=10&page=2";
+  "https://api.coingecko.com/api/v3/exchanges?per_page=10&page=1";
 
 const Directory = () => {
   const { data: exchanges, loading, errored } = useApi(endpoint);
