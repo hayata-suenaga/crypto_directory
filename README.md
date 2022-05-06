@@ -28,6 +28,16 @@ You can visit the site [here](https://crypto-dashboard-33501.web.app/).
 - `normalize-css`: For resetting css across browsers.
 - `prettier`: For formatting.
 
+### Project Structure
+
+- `pages`: Each file inside this directory corresponds to a page. A file might contain un-exported components.
+These components are intended to be used only inside the main component of that file.
+- `components`: Each file contains a single component that is exported as default.
+These components are used more than twice in the project or have the potential to be reused
+across the project if the project expands.
+- `hooks`: This directly only contains a single file that has some utility hooks used across the project.
+- `styles.css`: Since the project is small, all styling is contained inside this css file.
+
 ### Note about Cypress tests
 
 Instead of `localhost:3000`, the tests visit
