@@ -124,8 +124,11 @@ h1, h2, h3, p {
 header {
     width: 100vw;
     background-color: #1DA1F2;
-    height: 100px;
+    height: 4rem;
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #exchange-detail .headline {
@@ -143,6 +146,7 @@ header {
     margin-bottom: 2rem;
     gap: 2rem;
     flex-wrap: wrap;
+    margin-top: 2rem;
 }
 
 #exchange-detail img {

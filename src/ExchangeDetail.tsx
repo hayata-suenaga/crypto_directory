@@ -11,6 +11,7 @@ import { faCalendar } from "@fortawesome/free-solid-svg-icons/faCalendar";
 import { faRankingStar } from "@fortawesome/free-solid-svg-icons/faRankingStar";
 import IconButton from "./components/IconButton";
 import InfoCard from "./components/InfoCard";
+import Header from "./components/Header";
 
 const endpoint = "https://api.coingecko.com/api/v3/exchanges/";
 const twitterBaseUrl = "https://twitter.com/";
@@ -28,7 +29,7 @@ const ExchangeDetail = () => {
 
   return (
     <>
-      <header></header>
+      <Header title={exchange.name} />
       <main className="container">
         <DetailCard exchange={exchange} />
       </main>
