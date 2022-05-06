@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// Hook for fetching data from a single endpoint
 export const useApi = (url: string) => {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -24,4 +25,11 @@ export const useApi = (url: string) => {
   }, [url]);
 
   return { data, loading, errored };
+};
+
+// Hook for updating document title
+export const useUpdateDocTitle = (title: string | undefined = "") => {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
 };

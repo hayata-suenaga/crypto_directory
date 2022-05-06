@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useApi } from "../hooks/hooks";
+import { useApi, useUpdateDocTitle } from "../hooks/hooks";
 import React from "react";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons/faFacebook";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
@@ -20,6 +20,8 @@ const ExchangeDetail = () => {
   // Get id of exchange from the url
   const { id } = useParams();
   const { data: exchange, loading, errored } = useApi(endpoint + id);
+
+  useUpdateDocTitle(id?.toString());
 
   if (loading) return <div className="loading-indicator">Loading...</div>;
   if (errored)

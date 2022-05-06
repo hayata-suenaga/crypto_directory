@@ -1,6 +1,6 @@
 import ExchangeCard from "../components/ExchangeCard";
 import React from "react";
-import { useApi } from "../hooks/hooks";
+import { useApi, useUpdateDocTitle } from "../hooks/hooks";
 import Header from "../components/Header";
 
 const endpoint =
@@ -8,6 +8,8 @@ const endpoint =
 
 const Directory = () => {
   const { data: exchanges, loading, errored } = useApi(endpoint);
+
+  useUpdateDocTitle("crypt directory");
 
   if (loading) return <div className="loading-indicator">Loading...</div>;
 
