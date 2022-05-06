@@ -56,7 +56,7 @@ const DetailCard = ({ exchange }: { exchange: DetailedExchange }) => {
         <a>{"<- Back to Home"}</a>
       </Link>
       <div className="main-info">
-        <a className="headline" href={exchange.url}>
+        <a className="headline" href={url}>
           <img src={image} alt="exchange logo" />
           <h2>{name}</h2>
         </a>
