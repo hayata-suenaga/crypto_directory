@@ -51,6 +51,9 @@ const DetailCard = ({ exchange }: { exchange: DetailedExchange }) => {
 
   return (
     <article id="exchange-detail">
+      <Link to="/">
+        <a>{"<- Back to Home"}</a>
+      </Link>
       <div className="main-info">
         <a className="headline" href={exchange.url}>
           <img src={image} alt="exchange logo" />
