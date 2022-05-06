@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Crypto Directory 🐟🐟🐟
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is part of the interview process for an internship role @ [stake.fish](https://stake.fish/en/).
+You can see the hosted website of this project [here](https://crypto-dashboard-33501.web.app/).
 
-## Available Scripts
+### Hello stake.fish Team 👋
 
-In the project directory, you can run:
+Thank you for taking time to review my project! I enjoyed implementing this one.
+I added a little note here for your reference when navigating my project.
 
-### `npm start`
+### Hosting Environment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The projected is served by Firebase Hosting.
+You can visit the site [here](https://crypto-dashboard-33501.web.app/).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Available Scripts
 
-### `npm test`
+- `npm start`: Runs the app in the development mode at localhost:3000.
+- `npm run deploy`: Builds the app  to the `build` folder and deploys it to a Firebase project.
+- `npm cypress:open`: Opens up Cypress
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Dependencies
 
-### `npm run build`
+- `create-react-app`: For bootstrapping the project.
+- `typescript`: For static type checking.
+- `react-router-dom`: For routing.
+- `cypress`: For end-to-end testing.
+- `normalize-css`: For resetting css across browsers.
+- `prettier`: For formatting.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Note about Cypress tests
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Instead of `localhost:3000`, the tests visit
+[https://crypto-dashboard-33501.web.app/](https://crypto-dashboard-33501.web.app/).
+This is the url where the project is hosted.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+Since the project only hits third party api, I decided to stub all network requests with fixtures.
+I used responses for each end point as fixtures.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Final note
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you have time, please check the web application [eisuke.org](https://eisuke.org/) that I've launched.
+It's a React web application for students in Japan to learn English vocabulary with fun and efficiency.
+You can also watch [video demo](https://youtu.be/TmVEWS-gcos).
+My LinkedIn profile is [here](https://www.linkedin.com/in/hayata111
+).
