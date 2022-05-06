@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000/";
+const BASE_URL = "https://crypto-dashboard-33501.web.app/";
 // Fall back text when description for an exchange is not available
 const DESCRIPTION_NOT_FOUND = "Description not available";
 
