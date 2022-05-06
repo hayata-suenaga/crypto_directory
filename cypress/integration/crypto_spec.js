@@ -6,14 +6,6 @@ describe("Crypto Directory Test", () => {
   beforeEach(() => {
     // Create a server for stubbing network requests
     cy.server();
-
-    // Stub a network response to the endpoint for the list of exchanges
-    cy.intercept(
-      "https://api.coingecko.com/api/v3/exchanges?per_page=10&page=1",
-      {
-        fixture: "ten-exchanges",
-      }
-    ).as("ten-exchanges");
   });
 
   describe("Directory Page", () => {
@@ -27,6 +19,7 @@ describe("Crypto Directory Test", () => {
       ).as("ten-exchanges");
 
       cy.visit(BASE_URL);
+      // Wait for the stubbed response to return before running each test
       cy.wait("@ten-exchanges");
     });
 
@@ -48,13 +41,13 @@ describe("Crypto Directory Test", () => {
       }).as("binance");
 
       cy.visit(BASE_URL + "exchanges/binance");
-    });
-
-    it("Shows loading indicator when fetching data", () => {
-      cy.get(".loading-indicator");
+      // Wait for the stubbed response to return before running each test
+      cy.wait("@binance");
     });
 
     it("Contains right number of social media links", () => {
+      // Only social medias associated with the exchange should be displayed.
+      // The fixture stubbed has Facebook, Twitter, and Reddit.
       cy.url().should("include", "exchanges/binance");
     });
 
@@ -67,14 +60,23 @@ describe("Crypto Directory Test", () => {
     });
 
     it("Contains three info cards", () => {
+      // There should be info cards for country, trust score rank, and year established
       cy.get(".info-card").should("have.length", 3);
     });
 
     it("Displays a fallback text when description is not available", () => {
+      // This fixture stubbed doesn't have a description. Should resolve to the fallback text
       cy.get("p").contains(DESCRIPTION_NOT_FOUND);
     });
 
-    it("Navigates back to the Directory Page when the anchor tag is clicked", () => {
+    it("Navigates to the exchange's website when the name or image is clicked", () => {
+      // Check the value of href to see if the anchor tag navigates to the correct destination
+      cy.get(".headline")
+        .should("have.attr", "href")
+        .should("contain", "binance.com");
+    });
+
+    it("Navigates back to the Directory Page when the back link is clicked", () => {
       cy.contains("Back to Home").click();
       cy.url().should("eq", BASE_URL);
     });
@@ -82,7 +84,7 @@ describe("Crypto Directory Test", () => {
 
   describe("Loading indicator", () => {
     beforeEach(() => {
-      // Delay the stubbed responses
+      // Delay the stubbed response so that Cypress has enough time to find loading indicator
       cy.intercept(
         "https://api.coingecko.com/api/v3/exchanges?per_page=10&page=1",
         {
