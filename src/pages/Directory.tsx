@@ -1,7 +1,7 @@
-import Todo from "./components/ExchangeCard";
+import ExchangeCard from "../components/ExchangeCard";
 import React from "react";
-import { useApi } from "./hooks/hooks";
-import Header from "./components/Header";
+import { useApi } from "../hooks/hooks";
+import Header from "../components/Header";
 
 const endpoint =
   "https://api.coingecko.com/api/v3/exchanges?per_page=10&page=1";
@@ -24,7 +24,7 @@ const Directory = () => {
       <main className="container">
         <div id="exchange-list">
           {exchanges.map((exchange: Exchange) => (
-            <Todo key={exchange.id} exchange={exchange} />
+            <ExchangeCard key={exchange.id} exchange={exchange} />
           ))}
         </div>
       </main>

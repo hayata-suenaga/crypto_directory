@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Directory from "./Directory";
-import ExchangeDetail from "./ExchangeDetail";
+import Directory from "./pages/Directory";
+import ExchangeDetail from "./pages/ExchangeDetail";
 
-function App() {
+const App = () => {
+  /* This project uses react-router-dom for routing */
   return (
     <BrowserRouter>
       <Routes>
@@ -12,6 +13,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

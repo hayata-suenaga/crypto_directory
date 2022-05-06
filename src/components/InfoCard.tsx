@@ -11,13 +11,13 @@ const InfoCard = ({
   data: any;
 }) => {
   return (
-    <div className="info-card">
+    <article className="info-card">
       <div className="title">
         <FontAwesomeIcon icon={icon} />
         <h3>{title}</h3>
       </div>
       <p>{data}</p>
-    </div>
+    </article>
   );
 };
 

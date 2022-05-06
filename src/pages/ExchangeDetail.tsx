@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useApi } from "./hooks/hooks";
+import { useApi } from "../hooks/hooks";
 import React from "react";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons/faFacebook";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
@@ -9,9 +9,9 @@ import { faSlack } from "@fortawesome/free-brands-svg-icons/faSlack";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons/faGlobe";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons/faCalendar";
 import { faRankingStar } from "@fortawesome/free-solid-svg-icons/faRankingStar";
-import IconButton from "./components/IconButton";
-import InfoCard from "./components/InfoCard";
-import Header from "./components/Header";
+import IconButton from "../components/IconButton";
+import InfoCard from "../components/InfoCard";
+import Header from "../components/Header";
 
 const endpoint = "https://api.coingecko.com/api/v3/exchanges/";
 const twitterBaseUrl = "https://twitter.com/";
@@ -33,7 +33,7 @@ const ExchangeDetail = () => {
     <>
       <Header title={exchange.name} />
       <main className="container">
-        <DetailCard exchange={exchange} />
+        <PageBody exchange={exchange} />
       </main>
     </>
   );
@@ -41,19 +41,11 @@ const ExchangeDetail = () => {
 
 export default ExchangeDetail;
 
-const DetailCard = ({ exchange }: { exchange: DetailedExchange }) => {
-  const {
-    image,
-    name,
-    country,
-    url,
-    trust_score_rank,
-    year_established,
-    description,
-  } = exchange;
+const PageBody = ({ exchange }: { exchange: DetailedExchange }) => {
+  const { image, name, url, description } = exchange;
 
   return (
-    <article id="exchange-detail">
+    <div id="exchange-detail">
       <Link to="/">
         <a>{"<- Back to Home"}</a>
       </Link>
@@ -65,20 +57,28 @@ const DetailCard = ({ exchange }: { exchange: DetailedExchange }) => {
         <SocialMediaList exchange={exchange} />
       </div>
       <p>{description ? description : "Description not available"}</p>
-      <div id="info-card-list">
-        <InfoCard
-          title="country"
-          icon={faGlobe}
-          data={country ? country : "N/A"}
-        />
-        <InfoCard title="rank" icon={faRankingStar} data={trust_score_rank} />
-        <InfoCard
-          title="established at"
-          icon={faCalendar}
-          data={year_established}
-        />
-      </div>
-    </article>
+      <InfoCardList exchange={exchange} />
+    </div>
+  );
+};
+
+const InfoCardList = ({ exchange }: { exchange: DetailedExchange }) => {
+  const { country, trust_score_rank, year_established } = exchange;
+
+  return (
+    <div id="info-card-list">
+      <InfoCard
+        title="country"
+        icon={faGlobe}
+        data={country ? country : "N/A"}
+      />
+      <InfoCard title="rank" icon={faRankingStar} data={trust_score_rank} />
+      <InfoCard
+        title="established at"
+        icon={faCalendar}
+        data={year_established}
+      />
+    </div>
   );
 };
 
