@@ -31,7 +31,7 @@ const InfoTable = ({ exchange }: { exchange: Exchange }) => {
           <td>{country ? country : "N/A"}</td>
         </tr>
         <tr>
-          <td>Trust score</td>
+          <td>Trust Rank</td>
           <td>{trust_score_rank}</td>
         </tr>
         <tr>
